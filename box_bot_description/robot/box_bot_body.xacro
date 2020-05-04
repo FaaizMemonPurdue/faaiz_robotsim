@@ -13,17 +13,16 @@
           <inertia ixx="0.000241935" ixy="0" ixz="0" iyy="0.000241935" iyz="0" izz="0.000241935"/>
         </inertial>
         <!-- body -->
-        <collision name="collision_chassis">
+        <collision name="collision_${parent_name}">
           <geometry>
             <box size="${base_box_x} ${base_box_y} ${base_box_z}"/>
           </geometry>
         </collision>
 
-        <visual name="visual_chassis">
+        <visual name="visual_${parent_name}">
           <geometry>
             <box size="${base_box_x} ${base_box_y} ${base_box_z}"/>
           </geometry>
-          <material name="red"/>
         </visual>
 
       </link>
