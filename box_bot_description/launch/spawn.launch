@@ -24,7 +24,7 @@
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
         output="screen" args="--namespace=/box_bot
                               joint_state_controller
-                              direction_joint_position_controller
+                              top_propeller_joint_position_controller
                               --shutdown-timeout 3">
   </node>
 

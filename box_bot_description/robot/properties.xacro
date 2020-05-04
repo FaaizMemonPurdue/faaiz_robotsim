@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- Constants -->
+	<xacro:property name="PI" value="3.1415926535897931"/>
+	
+	<!-- Base Box -->    
+    <xacro:property name="base_box_mass" value="1.0"/>
+	<xacro:property name="base_box_x" value="0.381"/>
+    <xacro:property name="base_box_y" value="0.381"/>
+    <xacro:property name="base_box_z" value="0.0762"/>
+
+    <!-- Wheels -->
+	<xacro:property name="wheel_radius" value="${base_box_z / 2.0}"/>
+    <xacro:property name="wheel_width" value="0.001"/>
+    <xacro:property name="wheel_increment" value="0.010"/>
+
+</robot>
