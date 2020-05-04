@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot>
-  <gazebo reference="${base_name}">
-    <material>Gazebo/Red</material>
+  <gazebo reference="chassis">
+    <material>Gazebo/Blue</material>
   </gazebo>
   <gazebo reference="left_wheel">
       <kp>${kp_wheel}</kp>

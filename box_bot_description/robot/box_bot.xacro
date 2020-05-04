@@ -5,9 +5,9 @@
   <xacro:include filename="$(find box_bot_description)/robot/properties.xacro" />
   <xacro:include filename="$(find box_bot_description)/robot/macros.xacro" />
   <xacro:include filename="$(find box_bot_description)/robot/wheels.xacro" />
-  <xacro:include filename="$(find box_bot_description)/robot/caster_wheels.xacro" />
-  <xacro:include filename="$(find box_bot_description)/robot/box_bot.gazebo" />
+  <xacro:include filename="$(find box_bot_description)/robot/caster_wheels.xacro" />  
   <xacro:include filename="$(find box_bot_description)/robot/box_bot_body.xacro" />
+  <xacro:include filename="$(find box_bot_description)/robot/box_bot.gazebo" />
 
   <!--
   <xacro:include filename="$(find box_bot_description)/robot/box_bot_propeller.xacro" />
