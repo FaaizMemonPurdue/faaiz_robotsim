@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find box_bot_description)/robot/box_bot.xacro'"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find box_bot_description)/robot/box_bot.xacro'"/>
     <rosparam file="$(find box_bot_description)/config/box_bot_control.yaml"
             command="load"/>
 

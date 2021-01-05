@@ -12,7 +12,7 @@
         <inertial>
           <mass value="${base_box_mass}"/>
           <origin rpy="0 0 0" xyz="0 0 0"/>
-          <box_inertia mass="0.2" x="${base_box_x}" y="${base_box_y}" z="${base_box_z}"/>
+          <xacro:box_inertia mass="0.2" x="${base_box_x}" y="${base_box_y}" z="${base_box_z}"/>
           <inertia ixx="0.000241935" ixy="0" ixz="0" iyy="0.000241935" iyz="0" izz="0.000241935"/>
         </inertial>
         <!-- body -->

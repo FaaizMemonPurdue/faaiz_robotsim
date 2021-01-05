@@ -8,7 +8,7 @@
         <inertial>
             <mass value="0.001"/>
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-            <cylinder_inertia mass="0.001" r="${0.9 * radius/2.0}" l="${legth}" />
+            <xacro:cylinder_inertia mass="0.001" r="${0.9 * radius/2.0}" l="${legth}" />
           </inertial>
           <collision name="link_right_wheel_collision">
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
@@ -43,7 +43,7 @@
         <inertial>
             <mass value="0.001"/>
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-            <cylinder_inertia mass="0.001" r="${0.9 * radius/2.0}" l="${legth}" />
+            <xacro:cylinder_inertia mass="0.001" r="${0.9 * radius/2.0}" l="${legth}" />
           </inertial>
           <collision name="link_right_wheel_collision">
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
@@ -78,7 +78,7 @@
         <inertial>
           <mass value="0.001"/>
           <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-            <sphere_inertia mass="0.001" r="${radius}"/>
+            <xacro:sphere_inertia mass="0.001" r="${radius}"/>
         </inertial>
         <collision name="${caster_wheel_name}_collision">
           <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
