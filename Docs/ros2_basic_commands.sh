@@ -23,3 +23,34 @@ ros2 topic pub /box_bot/cmd_vel
 
 
 ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/box_bot/cmd_vel
+
+
+# Snapcraft
+# For ubuntu 20
+sudo snap install core20
+
+sudo snap install snapcraft --classic
+>> snapcraft 4.5.1 from Canonical✓ installed
+# Say yes to multi, and we enable experimental because otherwise it wont be able to add extensions: [ros2-foxy] in the app section
+snapcraft --enable-experimental-extensions
+
+# Install the snap once its done
+sudo snap install box-bot-ros2_0.1_amd64.snap --devmode --dangerous
+
+
+sudo snap remove box-bot-ros2
+
+###########
+
+
+This part is missing libraries that cannot be satisfied with any available stage-packages known to snapcraft:
+- libnddsc.so
+- libnddscore.so
+- libnddscpp.so
+- librosidl_typesupport_connext_c.so
+- librosidl_typesupport_connext_cpp.so
+- librticonnextmsgcpp.so
+- usr/lib/x86_64-linux-gnu/libpsm_infinipath.so.1
+These dependencies can be satisfied via additional parts or content sharing. Consider validating configured filesets if this dependency was built.
+
+
