@@ -1,37 +1,27 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>box_bot_gazebo</name>
   <version>0.0.0</version>
-  <description>The box_bot_gazebo package</description>
+  <description>TODO: Package description</description>
+  <maintainer email="duckfrost@gmail.com">tgrip</maintainer>
+  <license>TODO: License declaration</license>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag -->
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="rdaneel@todo.todo">rdaneel</maintainer>
-
-
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>TODO</license>
-
-  <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>box_bot_description</build_depend>
-  <build_depend>gazebo_ros</build_depend>
-  <build_depend>rospy</build_depend>
-  <build_export_depend>box_bot_description</build_export_depend>
-  <build_export_depend>gazebo_ros</build_export_depend>
-  <build_export_depend>rospy</build_export_depend>
-  <exec_depend>box_bot_description</exec_depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>rospy</exec_depend>
-  <exec_depend>turtlebot_teleop</exec_depend>
-  
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
 
-  <!-- The export tag contains other, unspecified, tags -->
+  <depend>ament_cmake</depend>
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <exec_depend>gazebo_ros_pkgs</exec_depend>
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
   <export>
-    <!-- Other tools can request additional information be placed here -->
-
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
