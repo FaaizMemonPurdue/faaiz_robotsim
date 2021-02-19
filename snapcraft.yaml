@@ -16,10 +16,20 @@ parts:
     source-branch: foxy
     build-packages: [make, gcc, g++]
     stage-packages: [ros-foxy-gazebo-ros-pkgs, ros-foxy-ros2launch, ros-foxy-urdf, libatlas-base-dev]
+    override-build: |
+      snapcraftctl build
+      set -ex
+      for dir in $SNAPCRAFT_PART_INSTALL/usr/lib/*/; do
+          (cd $dir;
+          if [ -f blas/libblas.so.3.* ]; then
+              ln -s blas/libblas.so.3.* libblas.so.3
+          fi)
+      done
+
 
 apps:
   box-bot-ros2-sim:
     command: opt/ros/foxy/bin/ros2 launch box_bot_gazebo box_bot_launch.py
-    environment:
-      LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/atlas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"
+    environment:      
+      LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/atlas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
     extensions: [ros2-foxy]

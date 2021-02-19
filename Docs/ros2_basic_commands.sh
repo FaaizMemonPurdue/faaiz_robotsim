@@ -27,6 +27,8 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/box_bot/cmd_vel
 
 # Snapcraft
 # For ubuntu 20
+sudo apt update
+sudo apt install snapd
 sudo snap install core20
 
 sudo snap install snapcraft --classic
