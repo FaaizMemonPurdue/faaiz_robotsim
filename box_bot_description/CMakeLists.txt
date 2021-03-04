@@ -43,6 +43,7 @@ install(
 install(
   PROGRAMS
   launch/spawn_box_bot.py
+  launch/spawn_box_bot_v2.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
