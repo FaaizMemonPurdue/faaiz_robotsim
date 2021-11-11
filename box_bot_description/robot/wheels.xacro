@@ -28,9 +28,9 @@
         <kd>${kd_wheel}</kd>
         <mu1>${mu1_wheel}</mu1>
         <mu2>${mu2_wheel}</mu2>
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/White</material>
       </gazebo>
-      
+
   </xacro:macro >
 
   <xacro:macro  name="joint_wheel" params="name parent child origin_xyz">
