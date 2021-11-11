@@ -5,21 +5,36 @@ from launch import LaunchDescription
 
 from launch_ros.actions import Node
 import xacro
-
+import random
 
 # this is the function launch  system will look for
 def generate_launch_description():
 
-    urdf_file = 'box_bot_v2.urdf'
+    ####### DATA INPUT ##########
+    urdf_file = 'box_bot_gen.urdf'
     xacro_file = "box_bot.xacro"
-
     package_description = "box_bot_description"
+    use_urdf = False
+    # Position and orientation
+    # [X, Y, Z]
+    position = [1.0,1.0,1.0]
+    # [Roll, Pitch, Yaw]
+    orientation = [0.0,0.0,1.57]
+    # Base Name or robot
+    robot_base_name = "box_bot"
+    ####### DATA INPUT END ##########
 
-    urdf_path = os.path.join(get_package_share_directory(package_description), "robot", urdf_file)
-    xacro_path = os.path.join(get_package_share_directory(package_description), "robot", xacro_file)
+    if use_urdf:
+        print("URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF ==>")
+        robot_desc_path = os.path.join(get_package_share_directory(package_description), "robot", urdf_file)
+    else:
+        print("XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO ==>")
+        robot_desc_path = os.path.join(get_package_share_directory(package_description), "robot", xacro_file)
 
-    robot_desc = xacro.process_file(xacro_path)
+    robot_desc = xacro.process_file(robot_desc_path)
     xml = robot_desc.toxml()
+
+    entity_name = robot_base_name+"-"+str(random.random())
 
     # Spawn ROBOT Set Gazebo
     spawn_robot = Node(
@@ -28,11 +43,14 @@ def generate_launch_description():
         name='spawn_entity',
         output='screen',
         arguments=['-entity',
-                   'box_bot',
-                   '-x', '0.75', '-y', '0.5', '-z', '1.1',
+                   entity_name,
+                   '-x', str(position[0]), '-y', str(position[1]), '-z', str(position[2]),
+                   '-R', str(orientation[0]), '-P', str(orientation[1]), '-Y', str(orientation[2]),
                    '-topic', '/robot_description'
                    ]
     )
+
+
     
     # Publish Robot Desciption in String form in the topic /robot_description
     publish_robot_description = Node(
