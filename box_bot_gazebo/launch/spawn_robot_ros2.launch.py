@@ -2,6 +2,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.substitutions import LaunchConfiguration
 
 from launch_ros.actions import Node
 import xacro
@@ -12,7 +13,8 @@ def generate_launch_description():
 
     ####### DATA INPUT ##########
     urdf_file = 'box_bot_gen.urdf'
-    xacro_file = "box_bot.xacro"
+    xacro_file = "box_bot_with_meshes.xacro"
+    #xacro_file = "box_bot.xacro"
     package_description = "box_bot_description"
     use_urdf = False
     # Position and orientation
@@ -63,10 +65,21 @@ def generate_launch_description():
                    ]
     )
 
+    # Robot State Publisher
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'use_sim_time': use_sim_time, 'robot_description': xml}],
+        output="screen"
+    )
+
     # create and return launch description object
     return LaunchDescription(
         [            
             spawn_robot,
-            publish_robot_description
+            publish_robot_description,
+            robot_state_publisher_node
         ]
     )

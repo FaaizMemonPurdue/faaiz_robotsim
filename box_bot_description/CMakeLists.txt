@@ -29,6 +29,7 @@ endif()
 install(
   DIRECTORY
     robot
+    meshes
   DESTINATION
     share/${PROJECT_NAME}/
 )

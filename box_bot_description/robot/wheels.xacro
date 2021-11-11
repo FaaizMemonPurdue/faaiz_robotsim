@@ -9,19 +9,28 @@
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
               <xacro:cylinder_inertia mass="0.2" r="${r}" l="${l}" />
           </inertial>
-          <collision name="link_right_wheel_collision">
+          <collision name="${name}_collision">
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
             <geometry>
               <cylinder length="${l}" radius="${r + incr}"/>
             </geometry>
           </collision>
-          <visual name="link_right_wheel_visual">
+          <visual name="${name}_visual">
             <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
             <geometry>
               <cylinder length="${l}" radius="${r + incr}"/>
             </geometry>
           </visual>
       </link>
+
+      <gazebo reference="${name}">
+        <kp>${kp_wheel}</kp>
+        <kd>${kd_wheel}</kd>
+        <mu1>${mu1_wheel}</mu1>
+        <mu2>${mu2_wheel}</mu2>
+        <material>Gazebo/Blue</material>
+      </gazebo>
+      
   </xacro:macro >
 
   <xacro:macro  name="joint_wheel" params="name parent child origin_xyz">
