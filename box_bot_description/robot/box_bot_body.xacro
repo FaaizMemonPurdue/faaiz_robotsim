@@ -29,7 +29,7 @@
         </visual>
       </link>
 
-      <gazebo reference="chassis">
+      <gazebo reference="${parent_name}">
         <material>Gazebo/Red</material>
       </gazebo>
 
