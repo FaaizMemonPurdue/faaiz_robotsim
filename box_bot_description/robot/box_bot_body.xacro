@@ -3,9 +3,6 @@
 
     <xacro:macro  name="box_bot_body" params="parent_name">
 
-      <link name="base_link">
-      </link>
-
       <link name="${parent_name}">
         <!-- pose and inertial -->
         <pose>0 0 0 0 0 0</pose>
@@ -33,20 +30,12 @@
         <material>Gazebo/Red</material>
       </gazebo>
 
-      <joint name="base_link_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="base_link" />
-        <child link="${parent_name}" />
-      </joint>
 
     </xacro:macro >
 
 
     <!-- box_bot_body_with_meshes -->
     <xacro:macro  name="box_bot_body_with_meshes" params="parent_name">
-
-      <link name="base_link">
-      </link>
 
       <link name="${parent_name}">
         <!-- pose and inertial -->
@@ -78,12 +67,6 @@
       <gazebo reference="${parent_name}">
         <material>Gazebo/Red</material>
       </gazebo>
-
-      <joint name="base_link_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="base_link" />
-        <child link="${parent_name}" />
-      </joint>
 
     </xacro:macro >
 

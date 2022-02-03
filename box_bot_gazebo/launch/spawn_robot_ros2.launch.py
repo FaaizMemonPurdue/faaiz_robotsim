@@ -9,6 +9,8 @@ import xacro
 import random
 
 # this is the function launch  system will look for
+
+
 def generate_launch_description():
 
     ####### DATA INPUT ##########
@@ -19,19 +21,21 @@ def generate_launch_description():
     use_urdf = False
     # Position and orientation
     # [X, Y, Z]
-    position = [1.0,1.0,1.0]
+    position = [1.0, 1.0, 1.0]
     # [Roll, Pitch, Yaw]
-    orientation = [0.0,0.0,1.57]
+    orientation = [0.0, 0.0, 1.57]
     # Base Name or robot
     robot_base_name = "box_bot"
     ####### DATA INPUT END ##########
 
     if use_urdf:
         print("URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF ==>")
-        robot_desc_path = os.path.join(get_package_share_directory(package_description), "robot", urdf_file)
+        robot_desc_path = os.path.join(get_package_share_directory(
+            package_description), "robot", urdf_file)
     else:
         print("XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO ==>")
-        robot_desc_path = os.path.join(get_package_share_directory(package_description), "robot", xacro_file)
+        robot_desc_path = os.path.join(get_package_share_directory(
+            package_description), "robot", xacro_file)
 
     robot_desc = xacro.process_file(robot_desc_path)
     xml = robot_desc.toxml()
@@ -46,14 +50,14 @@ def generate_launch_description():
         output='screen',
         arguments=['-entity',
                    entity_name,
-                   '-x', str(position[0]), '-y', str(position[1]), '-z', str(position[2]),
-                   '-R', str(orientation[0]), '-P', str(orientation[1]), '-Y', str(orientation[2]),
+                   '-x', str(position[0]), '-y', str(position[1]
+                                                     ), '-z', str(position[2]),
+                   '-R', str(orientation[0]), '-P', str(orientation[1]
+                                                        ), '-Y', str(orientation[2]),
                    '-topic', '/robot_description'
                    ]
     )
 
-
-    
     # Publish Robot Desciption in String form in the topic /robot_description
     publish_robot_description = Node(
         package='box_bot_gazebo',
@@ -77,7 +81,7 @@ def generate_launch_description():
 
     # create and return launch description object
     return LaunchDescription(
-        [            
+        [
             spawn_robot,
             publish_robot_description,
             robot_state_publisher_node

@@ -23,4 +23,25 @@
     <!--Caster Wheels-->
     <xacro:property name="dummy_length" value="0.001"/>
 
+
+    <!-- Sensors -->
+    <xacro:property name="sensor_mass" value="0.01"/>
+    <xacro:property name="camera_box_x" value="0.02"/>
+    <xacro:property name="camera_box_y" value="0.01"/>
+    <xacro:property name="camera_box_z" value="0.01"/>
+
+    <!-- Oberc Astra-->
+    <xacro:property name="orbbec_astra_scale" value="1.0"/>
+    <!-- RGB sensor - cam -->
+    <xacro:property name="orbbec_astra_rel_rgb_px"   value="0.0" />
+    <xacro:property name="orbbec_astra_rel_rgb_py"   value="-0.0125" />
+    <xacro:property name="orbbec_astra_rel_rgb_pz"   value="-0.0150" />  
+    <!-- IR sensor - depth -->
+    <xacro:property name="orbbec_astra_depth_rel_rgb_px" value="0.0" />
+    <xacro:property name="orbbec_astra_depth_rel_rgb_py" value="0.0250" />
+    <xacro:property name="orbbec_astra_depth_rel_rgb_pz" value="0.0" />
+
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+
 </robot>
