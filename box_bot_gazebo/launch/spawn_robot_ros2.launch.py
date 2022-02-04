@@ -29,11 +29,11 @@ def generate_launch_description():
     ####### DATA INPUT END ##########
 
     if use_urdf:
-        print("URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF ==>")
+        # print("URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF URDF ==>")
         robot_desc_path = os.path.join(get_package_share_directory(
             package_description), "robot", urdf_file)
     else:
-        print("XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO ==>")
+        # print("XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO XACRO ==>")
         robot_desc_path = os.path.join(get_package_share_directory(
             package_description), "robot", xacro_file)
 
@@ -79,24 +79,11 @@ def generate_launch_description():
         output="screen"
     )
 
-    # RVIZ Configuration
-    rviz_config_dir = os.path.join(get_package_share_directory(
-        package_description), 'rviz', 'box_bot.rviz')
-
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        output='screen',
-        name='rviz_node',
-        parameters=[{'use_sim_time': True}],
-        arguments=['-d', rviz_config_dir])
-
     # create and return launch description object
     return LaunchDescription(
         [
             spawn_robot,
             publish_robot_description,
-            robot_state_publisher_node,
-            rviz_node
+            robot_state_publisher_node
         ]
     )

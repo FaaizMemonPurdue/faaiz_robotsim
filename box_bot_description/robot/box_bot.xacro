@@ -8,6 +8,8 @@
   <xacro:include filename="$(find box_bot_description)/robot/caster_wheels.xacro" />  
   <xacro:include filename="$(find box_bot_description)/robot/box_bot_body.xacro" />
   <xacro:include filename="$(find box_bot_description)/robot/box_bot.gazebo" />
+  <xacro:arg name="use_nominal_extrinsics" default="false"/>
+  <xacro:include filename="$(find realsense2_description)/urdf/_r430.urdf.xacro" />
 
   <xacro:box_bot_body parent_name="${base_name}"/>
   
@@ -21,5 +23,6 @@
   <xacro:caster_wheel parent="chassis" caster_wheel_name="front" origin_xyz="${(base_box_x / 2.0) - wheel_increment} 0 ${-1.0* base_box_x / 2.0}" radius="${wheel_increment}" legth="${dummy_length}"/>
   <xacro:caster_wheel parent="chassis" caster_wheel_name="back" origin_xyz="${(-1.0 *base_box_x / 2.0) + wheel_increment} 0 ${-1.0* base_box_x / 2.0}" radius="${wheel_increment}" legth="${dummy_length}"/>
   
+
 
 </robot>
