@@ -49,13 +49,15 @@
         <!-- body -->
         <collision name="collision_${parent_name}">
           <geometry>
-                <mesh filename="$(find box_bot_description)/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
+                <!-- <mesh filename="$(find box_bot_description)/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/> -->
+                <mesh filename="package://box_bot_description/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
           </geometry>
         </collision>
 
         <visual name="visual_${parent_name}">
           <geometry>
-                <mesh filename="$(find box_bot_description)/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
+                <!-- <mesh filename="$(find box_bot_description)/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/> -->
+                <mesh filename="package://box_bot_description/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
           </geometry>
         </visual>
 

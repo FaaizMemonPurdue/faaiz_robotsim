@@ -156,6 +156,11 @@
   <xacro:macro name="laser_scan" params="parent_name sensor_name origin_xyz sensor_YAW">
 
     <link name='${sensor_name}_laser_scan_link'>
+        <visual name="visual_${parent_name}">
+            <geometry>
+                    <mesh filename="package://box_bot_description/meshes/sensors/rplidar.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
+            </geometry>
+        </visual>
 	</link>
 
     <joint name="${sensor_name}_laser_scan_link_joint" type="fixed">
