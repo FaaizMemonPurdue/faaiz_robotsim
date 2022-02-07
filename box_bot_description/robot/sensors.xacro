@@ -9,7 +9,8 @@
 			<origin xyz="0 0 0"
 					rpy="0 0 0"/>
 			<geometry>
-				<box size="${camera_box_x} ${camera_box_y} ${camera_box_z}"/>
+				<!-- <box size="${camera_box_x} ${camera_box_y} ${camera_box_z}"/> -->
+                 <mesh filename="package://box_bot_description/meshes/sensors/realsense.dae" scale="0.25 0.25 0.25"/>
 			</geometry>
 		</visual>
 	</link>
@@ -158,7 +159,7 @@
     <link name='${sensor_name}_laser_scan_link'>
         <visual name="visual_${parent_name}">
             <geometry>
-                    <mesh filename="package://box_bot_description/meshes/sensors/rplidar.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
+                    <mesh filename="package://box_bot_description/meshes/sensors/rplidar.dae" scale="1.0 1.0 1.0"/>
             </geometry>
         </visual>
 	</link>
@@ -215,6 +216,85 @@
 
   </xacro:macro>
 
+
+<xacro:macro name="block_laser_scan" params="parent_name sensor_name origin_xyz sensor_YAW">
+
+    <link name='${sensor_name}_laser_scan_link'>
+        <visual name="visual_${parent_name}">
+            <geometry>
+                    <mesh filename="package://box_bot_description/meshes/sensors/realsense.dae" scale="0.25 0.25 0.25"/>
+            </geometry>
+        </visual>
+	</link>
+
+    <joint name="${sensor_name}_laser_scan_link_joint" type="fixed">
+		<origin rpy="0 0 ${sensor_YAW - 1.5708}" xyz="${origin_xyz}"/>
+		<parent link="${parent_name}"/>
+		<child link="${sensor_name}_laser_scan_link"/>
+	</joint>
+
+
+    <link name="${sensor_name}_laser_scan_frame">
+    </link>
+
+
+
+    <joint name="${sensor_name}_laser_scan_frame_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="${sensor_name}_laser_scan_link" />
+        <child link="${sensor_name}_laser_scan_frame" />
+        <axis xyz="0 0 0"/>
+    </joint>
+
+    <gazebo reference="${sensor_name}_laser_scan_frame">
+        <sensor type="ray" name="block_laser_sensor">
+            <ray>
+            <scan>
+                <horizontal>
+                    <samples>50</samples>
+                    <resolution>1.0</resolution>
+                    <min_angle>-1.0</min_angle>
+                    <max_angle>1.0</max_angle>
+                </horizontal>
+                <vertical>
+                    <samples>50</samples>
+                    <resolution>1.0</resolution>
+                    <min_angle>-1.0</min_angle>
+                    <max_angle>1.0</max_angle>
+                </vertical>
+            </scan>
+            <range>
+                <min>0.10</min>
+                <max>5.0</max>
+                <resolution>0.01</resolution>
+            </range>
+            <!-- Using gazebo's noise instead of plugin's -->
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.01</stddev>
+            </noise>
+            </ray>
+            <!-- Using gazebo's update rate instead of plugin's -->
+            <update_rate>30</update_rate>
+            <plugin name="gazebo_ros_block_laser_controller" filename="libgazebo_ros_ray_sensor.so">
+            <!-- Change namespace and output topic so published topic is /rrbot/laser/pointcloud -->
+            <ros>
+                <namespace>/rrbot/laser</namespace>
+                <argument>~/out:=pointcloud</argument>
+            </ros>
+            <!-- Set output to sensor_msgs/PointCloud to get same output type as gazebo_ros_block_laser -->
+            <output_type>sensor_msgs/PointCloud</output_type>
+            <!-- <frame_name> ommited, will default to block_laser_link -->
+
+            <!-- min_intensity instead of hokuyoMinIntensity -->
+            <min_intensity>100.0</min_intensity>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+</xacro:macro>
 
 
 
