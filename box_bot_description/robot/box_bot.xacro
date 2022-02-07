@@ -8,8 +8,6 @@
   <xacro:include filename="$(find box_bot_description)/robot/caster_wheels.xacro" />  
   <xacro:include filename="$(find box_bot_description)/robot/box_bot_body.xacro" />
   <xacro:include filename="$(find box_bot_description)/robot/box_bot.gazebo" />
-  <xacro:arg name="use_nominal_extrinsics" default="false"/>
-  <xacro:include filename="$(find realsense2_description)/urdf/_r430.urdf.xacro" />
 
   <xacro:box_bot_body parent_name="${base_name}"/>
   
