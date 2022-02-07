@@ -15,17 +15,26 @@ def generate_launch_description():
     # Sart World
     start_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_box_bot_gazebo, 'launch', 'start_world_launch.py'),
+            os.path.join(pkg_box_bot_gazebo, 'launch',
+                         'start_world_launch.py'),
         )
     )
 
     spawn_robot_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_box_bot_gazebo, 'launch', 'spawn_robot_ros2.launch.py'),
+            os.path.join(pkg_box_bot_gazebo, 'launch',
+                         'spawn_robot_ros2.launch.py'),
         )
-    )     
+    )
+
+    start_rviz = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_box_bot_gazebo, 'launch', 'start_rviz.launch.py'),
+        )
+    )
 
     return LaunchDescription([
         start_world,
-        spawn_robot_world
+        spawn_robot_world,
+        start_rviz
     ])

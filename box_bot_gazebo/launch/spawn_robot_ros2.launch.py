@@ -21,9 +21,9 @@ def generate_launch_description():
     use_urdf = False
     # Position and orientation
     # [X, Y, Z]
-    position = [1.0, 1.0, 1.0]
+    position = [0.73, -0.39, 0.5]
     # [Roll, Pitch, Yaw]
-    orientation = [0.0, 0.0, 1.57]
+    orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
     robot_base_name = "box_bot"
     ####### DATA INPUT END ##########

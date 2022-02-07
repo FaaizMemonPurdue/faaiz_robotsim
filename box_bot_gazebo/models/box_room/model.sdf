@@ -7,7 +7,7 @@
         <geometry>
           <mesh>
             <uri>model://box_room/meshes/box_room.dae</uri>
-            <scale>0.01 0.01 0.01</scale>
+            <scale>0.05 0.05 0.05</scale>
           </mesh>
         </geometry>
         <cast_shadows>0</cast_shadows>
@@ -20,7 +20,7 @@
         <geometry>
           <mesh>
             <uri>model://box_room/meshes/box_room.dae</uri>
-            <scale>0.01 0.01 0.01</scale>
+            <scale>0.05 0.05 0.05</scale>
           </mesh>
         </geometry>
      </collision>

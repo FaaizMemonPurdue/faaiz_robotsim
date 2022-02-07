@@ -39,13 +39,13 @@
             <camera name="head">
                 <horizontal_fov>1.3962634</horizontal_fov>
                 <image>
-                <width>800</width>
-                <height>800</height>
+                <width>300</width>
+                <height>300</height>
                 <format>R8G8B8</format>
                 </image>
                 <clip>
                 <near>0.02</near>
-                <far>300</far>
+                <far>20.0</far>
                 </clip>
                 <noise>
                 <type>gaussian</type>
@@ -55,6 +55,8 @@
                 <mean>0.0</mean>
                 <stddev>0.007</stddev>
                 </noise>
+                <always_on>1</always_on>
+                <update_rate>30</update_rate>
             </camera>
 
             <plugin name="plugin_name" filename="libgazebo_ros_camera.so">
@@ -177,7 +179,7 @@
 
 
     <joint name="${sensor_name}_laser_scan_frame_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.03" rpy="0 0 0" />
         <parent link="${sensor_name}_laser_scan_link" />
         <child link="${sensor_name}_laser_scan_frame" />
         <axis xyz="0 0 0"/>
@@ -186,7 +188,7 @@
 
 	<gazebo reference="${sensor_name}_laser_scan_frame">
 		<sensor name="sensor_ray" type="ray">
-        <pose>0.5 0 0 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <ray>
           <scan>
             <horizontal>
