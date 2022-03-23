@@ -13,9 +13,10 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 
 class SteeringActionClient(Node):
 
-    def __init__(self):
+    def __init__(self, robot_name="box_bot"):
         super().__init__('move_laser_actionclient')
-        self._action_client = ActionClient(self, FollowJointTrajectory, '/joint_trajectory_controller/follow_joint_trajectory')
+        action_name = "/" + robot_name + "/joint_trajectory_controller/follow_joint_trajectory"
+        self._action_client = ActionClient(self, FollowJointTrajectory, action_name)
 
     def send_goal(self, position_value):
         goal_msg = FollowJointTrajectory.Goal()
