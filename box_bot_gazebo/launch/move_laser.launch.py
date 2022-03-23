@@ -8,7 +8,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         launch_ros.actions.Node(
-            package='box_car_description',
+            package='box_bot_description',
             executable='move_laser.py',
             output='screen',
             arguments=["0.5"]),

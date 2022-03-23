@@ -14,7 +14,7 @@ def generate_launch_description():
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     pkg_box_bot_gazebo = get_package_share_directory('box_bot_gazebo')
 
-    description_package_name = "my_box_bot_description"
+    description_package_name = "box_bot_description"
     install_dir = get_package_prefix(description_package_name)
 
     # Set the path to the WORLD model files. Is to find the models inside the models folder in my_box_bot_gazebo package

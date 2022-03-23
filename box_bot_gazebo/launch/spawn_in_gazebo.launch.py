@@ -13,8 +13,9 @@ def generate_launch_description():
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
-    entity_name = "box_bot_1"
+    entity_name = "box_bot"
     robot_description_topic_name = "/" + entity_name + "_robot_description"
+    robot_state_publisher_name= entity_name + "_robot_state_publisher"
 
     # Spawn ROBOT Set Gazebo
     spawn_robot = Node(
@@ -30,7 +31,9 @@ def generate_launch_description():
                    '-R', str(orientation[0]), '-P', str(orientation[1]
                                                         ), '-Y', str(orientation[2]),
                    '-topic', robot_description_topic_name
-                   ]
+                   ],
+        remappings=[("/robot_state_publisher", robot_state_publisher_name)
+                    ]
     )
 
     return LaunchDescription(
