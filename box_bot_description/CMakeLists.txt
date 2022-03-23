@@ -30,7 +30,9 @@ install(
   DIRECTORY
     robot
     meshes
-	rviz
+	  rviz
+    urdf
+    config
   DESTINATION
     share/${PROJECT_NAME}/
 )

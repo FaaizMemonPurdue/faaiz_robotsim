@@ -50,9 +50,8 @@ install(
     share/${PROJECT_NAME}/
 )
 
-install(
-  PROGRAMS
-  launch/robot_description_publisher.py
+install(PROGRAMS
+  scripts/move_laser.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

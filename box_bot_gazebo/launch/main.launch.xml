@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <include file="$(find-pkg-share box_bot_gazebo)/launch/start_world.launch.py"/>
+    <include file="$(find-pkg-share box_bot_description)/launch/spawn_in_gazebo.launch.py"/>
+    <include file="$(find-pkg-share box_bot_gazebo)/launch/spawn_in_gazebo.launch.py"/>
+    <include file="$(find-pkg-share box_bot_gazebo)/launch/start_control.launch.py"/>
+    <include file="$(find-pkg-share box_bot_gazebo)/launch/move_laser.launch.py"/>
+
+</launch>
