@@ -1,19 +1,25 @@
 import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch.actions import OpaqueFunction
 
-# this is the function launch  system will look for
+def launch_setup(context, *args, **kwargs):
 
-
-def generate_launch_description():
+    entity_name = LaunchConfiguration('box_bot_name').perform(context)
+    x_spawn = LaunchConfiguration('x_spawn').perform(context)
+    y_spawn = LaunchConfiguration('y_spawn').perform(context)
+    z_spawn = LaunchConfiguration('z_spawn').perform(context)
+    roll_spawn = LaunchConfiguration('roll_spawn').perform(context)
+    pitch_spawn = LaunchConfiguration('pitch_spawn').perform(context)
+    yaw_spawn = LaunchConfiguration('yaw_spawn').perform(context)
 
     # Position and orientation
     # [X, Y, Z]
-    position = [0.0, 0.0, 1.0]
+    position = [x_spawn, y_spawn, z_spawn]
     # [Roll, Pitch, Yaw]
-    orientation = [0.0, 0.0, 0.0]
-    # Base Name or robot
-    entity_name = "box_bot"
+    orientation = [roll_spawn, pitch_spawn, yaw_spawn]
     robot_description_topic_name = "/" + entity_name + "_robot_description"
     robot_state_publisher_name= entity_name + "_robot_state_publisher"
 
@@ -36,8 +42,28 @@ def generate_launch_description():
                     ]
     )
 
-    return LaunchDescription(
-        [
-            spawn_robot
-        ]
-    )
+
+    return [spawn_robot]
+
+
+def generate_launch_description(): 
+
+    box_bot_name_arg = DeclareLaunchArgument('box_bot_name', default_value='box_bot')
+    x_spawn_arg = DeclareLaunchArgument('x_spawn', default_value='0.0')
+    y_spawn_arg = DeclareLaunchArgument('y_spawn', default_value='0.0')
+    z_spawn_arg = DeclareLaunchArgument('z_spawn', default_value='0.0')
+    roll_spawn_arg = DeclareLaunchArgument('roll_spawn', default_value='0.0')
+    pitch_spawn_arg = DeclareLaunchArgument('pitch_spawn', default_value='0.0')
+    yaw_spawn_arg = DeclareLaunchArgument('yaw_spawn', default_value='0.0')
+
+
+    return LaunchDescription([
+        box_bot_name_arg,
+        x_spawn_arg,
+        y_spawn_arg, 
+        z_spawn_arg,
+        roll_spawn_arg,
+        pitch_spawn_arg,
+        yaw_spawn_arg,
+        OpaqueFunction(function = launch_setup)
+        ])

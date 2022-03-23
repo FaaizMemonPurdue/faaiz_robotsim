@@ -20,6 +20,11 @@
     <xacro:property name="kp_wheel" value="1000.0"/>
     <xacro:property name="kd_wheel" value="1000.0"/>
 
+    <xacro:property name="wheel_separation" value="${base_box_x}"/>
+    <xacro:property name="wheel_diameter" value="${(base_box_z / 2.0) + 2.0 * wheel_increment}"/>
+    <xacro:property name="max_wheel_torque" value="1.0"/>
+    <xacro:property name="max_wheel_acceleration" value="2.0"/>
+
     <!--Caster Wheels-->
     <xacro:property name="dummy_length" value="0.001"/>
 

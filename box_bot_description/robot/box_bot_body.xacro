@@ -1,74 +1,38 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro  name="box_bot_body" params="parent_name">
+    <xacro:macro  name="box_bot_body" params="robot_name">
 
-      <link name="${parent_name}">
-        <!-- pose and inertial -->
-        <pose>0 0 0 0 0 0</pose>
-        <inertial>
-          <mass value="${base_box_mass}"/>
-          <origin rpy="0 0 0" xyz="0 0 0"/>
-          <xacro:box_inertia mass="0.2" x="${base_box_x}" y="${base_box_y}" z="${base_box_z}"/>
-          <inertia ixx="0.000241935" ixy="0" ixz="0" iyy="0.000241935" iyz="0" izz="0.000241935"/>
-        </inertial>
-        <!-- body -->
-        <collision name="collision_${parent_name}">
+      <link name="${robot_name}_base_link">
+      </link>
+
+      <link name="${robot_name}_chassis">
+        <visual name="${robot_name}_visual_chassis">
           <geometry>
-            <box size="${base_box_x} ${base_box_y} ${base_box_z}"/>
+            <mesh filename="package://box_bot_description/meshes/cute_cube.dae" scale="0.1 0.1 0.1"/>
+          </geometry>
+          <material name="box_bot_blue"/>
+        </visual>
+
+        <collision name="${robot_name}_collision_chassis">
+          <geometry>
+            <box size="0.1 0.1 0.1"/>
           </geometry>
         </collision>
 
-        <visual name="visual_${parent_name}">
-          <geometry>
-            <box size="${base_box_x} ${base_box_y} ${base_box_z}"/>
-          </geometry>
-        </visual>
-      </link>
-
-      <gazebo reference="${parent_name}">
-        <material>Gazebo/Red</material>
-      </gazebo>
-
-
-    </xacro:macro >
-
-
-    <!-- box_bot_body_with_meshes -->
-    <xacro:macro  name="box_bot_body_with_meshes" params="parent_name">
-
-      <link name="${parent_name}">
-        <!-- pose and inertial -->
-        <pose>0 0 0 0 0 0</pose>
         <inertial>
-          <mass value="${base_box_mass}"/>
+          <mass value="0.5"/>
           <origin rpy="0 0 0" xyz="0 0 0"/>
-          <xacro:box_inertia mass="0.2" x="${base_box_x}" y="${base_box_y}" z="${base_box_z}"/>
-          <inertia ixx="0.000241935" ixy="0" ixz="0" iyy="0.000241935" iyz="0" izz="0.000241935"/>
+          <inertia ixx="0.0008333333333333335" ixy="0" ixz="0" iyy="0.0008333333333333335" iyz="0" izz="0.0008333333333333335"/>
         </inertial>
-        <!-- body -->
-        <collision name="collision_${parent_name}">
-          <geometry>
-                <!-- <mesh filename="$(find box_bot_description)/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/> -->
-                <mesh filename="package://box_bot_description/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
-          </geometry>
-        </collision>
 
-        <visual name="visual_${parent_name}">
-          <geometry>
-                <!-- <mesh filename="$(find box_bot_description)/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/> -->
-                <mesh filename="package://box_bot_description/meshes/cute_cube.dae" scale="${base_box_x} ${base_box_y} ${base_box_z}"/>
-          </geometry>
-        </visual>
-
-        <animation name="animation">
-          <filename>Idle.dae</filename>
-        </animation>
       </link>
 
-      <gazebo reference="${parent_name}">
-        <material>Gazebo/Red</material>
-      </gazebo>
+      <joint name="${robot_name}_base_link_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="${robot_name}_base_link" />
+        <child link="${robot_name}_chassis" />
+      </joint>
 
     </xacro:macro >
 
