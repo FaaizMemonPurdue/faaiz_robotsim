@@ -17,7 +17,7 @@
     <gazebo reference="${robot_name}_rgb_camera_link_frame">
         <sensor name="camera" type="wideanglecamera">
           <camera>
-            <horizontal_fov>6.283</horizontal_fov>
+            <horizontal_fov>1.0472</horizontal_fov>
             <image>
               <width>320</width>
               <height>240</height>

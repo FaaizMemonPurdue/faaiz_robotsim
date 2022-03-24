@@ -10,8 +10,8 @@
                 </ros>
                 <update_rate>30</update_rate>
 
-                <joint_name>${robot_name}_joint_left_wheel</joint_name>
-                <joint_name>${robot_name}_joint_right_wheel</joint_name>
+                <joint_name>${robot_name}_left_wheel_joint</joint_name>
+                <joint_name>${robot_name}_right_wheel_joint</joint_name>
                 <joint_name>${robot_name}_front_yaw_joint</joint_name>
                 <joint_name>${robot_name}_back_yaw_joint</joint_name>
                 <joint_name>${robot_name}_front_roll_joint</joint_name>
