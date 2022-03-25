@@ -15,14 +15,15 @@ class SteeringActionClient(Node):
 
     def __init__(self, robot_name="box_bot"):
         super().__init__('move_laser_actionclient')
-        action_name = "/" + robot_name + "/joint_trajectory_controller/follow_joint_trajectory"
+        self._robot_name = robot_name
+        action_name = "/" + self._robot_name + "/joint_trajectory_controller/follow_joint_trajectory"
         self._action_client = ActionClient(self, FollowJointTrajectory, action_name)
 
     def send_goal(self, position_value):
         goal_msg = FollowJointTrajectory.Goal()
 
         # Fill in data for trajectory
-        joint_names = ["laser_scan_link_joint"]
+        joint_names = [self._robot_name +"_laser_scan_link_joint"]
 
         points = []
 
@@ -67,9 +68,13 @@ def main(args=None):
     
     rclpy.init()
 
-    action_client = SteeringActionClient()
+    
 
     position_value = float(sys.argv[1])
+    robot_name = sys.argv[2]
+
+    action_client = SteeringActionClient(robot_name)
+
     future = action_client.send_goal(position_value)
 
     rclpy.spin(action_client)

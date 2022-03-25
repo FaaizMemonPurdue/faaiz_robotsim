@@ -15,7 +15,7 @@ box_bot_1:
   joint_trajectory_controller:
     ros__parameters:
       joints:
-        - laser_scan_link_joint
+        - box_bot_1_laser_scan_link_joint
       interface_name: position
       command_interfaces:
         - position
@@ -26,7 +26,7 @@ box_bot_1:
   velocity_controller:
     ros__parameters:
       joints:
-        - laser_scan_model_link_joint
+        - box_bot_1_laser_scan_model_link_joint
       interface_name: velocity
       command_interfaces:
         - velocity

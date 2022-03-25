@@ -1,4 +1,4 @@
-box_bot:
+box_bot_2:
   controller_manager:
     ros__parameters:
       update_rate: 100  # Hz
@@ -15,7 +15,7 @@ box_bot:
   joint_trajectory_controller:
     ros__parameters:
       joints:
-        - laser_scan_link_joint
+        - box_bot_2_laser_scan_link_joint
       interface_name: position
       command_interfaces:
         - position
@@ -26,7 +26,7 @@ box_bot:
   velocity_controller:
     ros__parameters:
       joints:
-        - laser_scan_model_link_joint
+        - box_bot_2_laser_scan_model_link_joint
       interface_name: velocity
       command_interfaces:
         - velocity

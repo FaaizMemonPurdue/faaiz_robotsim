@@ -15,7 +15,7 @@
     </joint>
 
     <gazebo reference="${robot_name}_rgb_camera_link_frame">
-        <sensor name="camera" type="wideanglecamera">
+        <sensor name="${robot_name}_camera" type="wideanglecamera">
           <camera>
             <horizontal_fov>1.0472</horizontal_fov>
             <image>
@@ -57,7 +57,7 @@
             <ros>
               <namespace>/${robot_name}</namespace>
             </ros>
-            <cameraName>rgb_camera</cameraName>
+            <cameraName>${robot_name}_rgb_camera</cameraName>
             <imageTopicName>image_raw</imageTopicName>
             <cameraInfoTopicName>camera_info</cameraInfoTopicName>
             <frameName>${robot_name}_rgb_camera_link_frame</frameName>
@@ -127,7 +127,7 @@
 
 
     <gazebo reference="${robot_name}_pointcloud_link">
-        <sensor type="ray" name="pointcloud_sensor">
+        <sensor type="ray" name="${robot_name}_pointcloud_sensor">
             <ray>
             <scan>
                 <horizontal>
@@ -161,7 +161,8 @@
             <!-- Change namespace and output topic so published topic is /rrbot/laser/pointcloud -->
             <ros>
                 <namespace>/${robot_name}/pointcloud</namespace>
-                <argument>~/out:=pointcloud</argument>
+                <argument>--ros-args --remap ~/out:=pointcloud</argument>
+                
             </ros>
             <!-- Set output to sensor_msgs/PointCloud to get same output type as gazebo_ros_block_laser -->
             <output_type>sensor_msgs/PointCloud</output_type>
