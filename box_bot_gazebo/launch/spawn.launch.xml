@@ -27,9 +27,14 @@
         <arg name="yaw_spawn" value="$(var yaw_spawn)"/>
     </include>
     
-    <include file="$(find-pkg-share box_bot_gazebo)/launch/start_control.launch.py">
+
+    <include file="$(find-pkg-share box_bot_gazebo)/launch/static_odom_to_world.launch.py">
         <arg name="box_bot_name" value="$(var box_bot_name)"/>
     </include>
+
+    <!-- <include file="$(find-pkg-share box_bot_gazebo)/launch/start_control.launch.py">
+        <arg name="box_bot_name" value="$(var box_bot_name)"/>
+    </include> -->
     
 
 </launch>

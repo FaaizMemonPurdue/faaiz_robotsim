@@ -26,28 +26,16 @@
               <near>0.1</near>
               <far>100</far>
             </clip>
-            <!-- A new section named `lens`. -->
             <lens>
-              <!-- type element is mandatory -->
               <type>custom</type>
-              <!-- manually defined mapping function r = c1*f*fun(theta/c2 + c3) -->
-              <!-- More information here: https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function -->
               <custom_function>
                 <c1>1.05</c1>
-                <!-- linear scaling -->
                 <c2>4</c2>
-                <!-- angle scaling -->
                 <f>1.0</f>
-                <!-- one more scaling parameter -->
                 <fun>tan</fun>
-                <!-- one of sin,tan,id -->
               </custom_function>
-              <!-- if it is set to `true` your horizontal FOV will ramain as defined -->
-              <!-- othervise it depends on lens type and custom function, if there is one -->
               <scale_to_hfov>true</scale_to_hfov>
-              <!-- clip everything that is outside of this angle -->
               <cutoff_angle>3.1415</cutoff_angle>
-              <!-- resolution of the cubemap texture, the highter it is - the sharper is your image -->
               <env_texture_size>512</env_texture_size>
             </lens>
             <always_on>1</always_on>
@@ -55,7 +43,7 @@
           </camera>
           <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
             <ros>
-              <namespace>/${robot_name}</namespace>
+              <namespace>${robot_name}</namespace>
             </ros>
             <cameraName>${robot_name}_rgb_camera</cameraName>
             <imageTopicName>image_raw</imageTopicName>
@@ -103,7 +91,7 @@
           <update_rate>100.0</update_rate>
           <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
             <ros>
-              <namespace>/${robot_name}</namespace>
+              <namespace>${robot_name}</namespace>
               <remapping>~/out:=laser_scan</remapping>
             </ros>
             <output_type>sensor_msgs/LaserScan</output_type>
@@ -160,7 +148,7 @@
             <plugin name="gazebo_ros_block_laser_controller" filename="libgazebo_ros_ray_sensor.so">
             <!-- Change namespace and output topic so published topic is /rrbot/laser/pointcloud -->
             <ros>
-                <namespace>/${robot_name}/pointcloud</namespace>
+                <namespace>${robot_name}</namespace>
                 <argument>--ros-args --remap ~/out:=pointcloud</argument>
                 
             </ros>

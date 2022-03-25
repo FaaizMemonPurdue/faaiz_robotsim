@@ -21,13 +21,10 @@
 
   <xacro:caster_wheel robot_name="$(arg box_bot_name)" parent="$(arg box_bot_name)_chassis" caster_wheel_name="front" origin_xyz="${(base_box_x / 2.0) - wheel_increment} 0 ${-1.0* base_box_x / 2.0}" radius="${wheel_increment}" legth="${dummy_length}"/>
   <xacro:caster_wheel robot_name="$(arg box_bot_name)" parent="$(arg box_bot_name)_chassis" caster_wheel_name="back" origin_xyz="${(-1.0 *base_box_x / 2.0) + wheel_increment} 0 ${-1.0* base_box_x / 2.0}" radius="${wheel_increment}" legth="${dummy_length}"/>
-  
-  
+    
   <xacro:box_bot_gazebo_systems robot_name="$(arg box_bot_name)"/>
 
-  <xacro:box_bot_laser_control robot_name="$(arg box_bot_name)" parent="$(arg box_bot_name)_chassis"/>
-
-  <xacro:laser_scan robot_name="$(arg box_bot_name)" parent_name="$(arg box_bot_name)_laser_scan_link" origin_xyz="0.0 0.0 ${base_box_x / 2.0}" sensor_YAW="0.0"/>
+  <xacro:laser_scan robot_name="$(arg box_bot_name)" parent_name="$(arg box_bot_name)_chassis" origin_xyz="0.0 0.0 ${base_box_x / 2.0}" sensor_YAW="0.0"/>
   <xacro:point_cloud_sensor robot_name="$(arg box_bot_name)" parent_name="$(arg box_bot_name)_chassis" sensor_name="block_laser_scan" origin_xyz="${base_box_x/ 1.9} 0.0 0.0" sensor_YAW="0.0"/>
   <xacro:camera_rgb robot_name="$(arg box_bot_name)" parent_name="$(arg box_bot_name)_chassis" origin_xyz="${base_box_x/ 1.9} 0.0 ${base_box_x / 2.0}" camera_ROLL="0.0" camera_PITCH="0.0" camera_YAW="0.0"/>
   
