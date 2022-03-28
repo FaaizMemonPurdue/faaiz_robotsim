@@ -9,7 +9,7 @@
       <link name="${robot_name}_chassis">
         <visual name="${robot_name}_visual_chassis">
           <geometry>
-            <mesh filename="package://box_bot_description/meshes/cute_cube.dae" scale="0.1 0.1 0.1"/>
+            <mesh filename="package://box_bot_description/meshes/${robot_name}.dae" scale="0.1 0.1 0.1"/>
           </geometry>
           <material name="box_bot_blue"/>
         </visual>

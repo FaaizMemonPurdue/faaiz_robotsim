@@ -30,3 +30,4 @@ data: [-20.0]
 
 ros2 run box_bot_gazebo move_laser.py -0.0 box_bot_1
 ros2 run box_bot_gazebo move_laser.py -0.05 box_bot_1
+
