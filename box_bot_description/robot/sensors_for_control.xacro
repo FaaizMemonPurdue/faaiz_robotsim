@@ -43,7 +43,6 @@
           </camera>
           <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
             <ros>
-              <namespace>${robot_name}</namespace>
             </ros>
             <cameraName>${robot_name}_rgb_camera</cameraName>
             <imageTopicName>image_raw</imageTopicName>
@@ -59,42 +58,13 @@
 
   
   <xacro:macro name="laser_scan" params="robot_name parent_name origin_xyz sensor_YAW">
-      <link name="${robot_name}_laser_scan_model_link">
-        <visual name="${robot_name}_visual_laser_scan_link">
-          <origin rpy="0 0 0" xyz="0 0 0"/>
-          <geometry>
-            <mesh filename="package://box_bot_description/meshes/sensors/rplidar.dae" scale="1.0 1.0 1.0"/>
-          </geometry>
-        </visual>
-
-        <collision name="${robot_name}_collision_laser_scan_link">
-          <origin rpy="0 0 0" xyz="0 0 0.0204"/>
-          <geometry>
-            <cylinder length="0.0408" radius="0.037493"/>
-          </geometry>
-        </collision>
-
-        <inertial>
-
-          <mass value="0.01"/>
-          <origin rpy="0 0 0" xyz="0 0 0.0204"/>
-          <inertia ixx="6.066578520833334e-06" ixy="0" ixz="0" iyy="6.066578520833334e-06" iyz="0" izz="9.365128684166666e-06"/>
-        </inertial>
-      </link>
-
-
-    <joint name="${robot_name}_laser_scan_model_link_joint" type="fixed">
-        <origin xyz="${origin_xyz}" rpy="0 0 ${sensor_YAW}" />
-        <parent link="${parent_name}" />
-        <child link="${robot_name}_laser_scan_model_link" />
-    </joint>
 
     <link name="${robot_name}_laser_scan_frame">
     </link>
 
     <joint name="${robot_name}_laser_scan_frame_joint" type="fixed">
-        <origin xyz="0 0 0.03" rpy="0 0 ${sensor_YAW}" />
-        <parent link="${robot_name}_laser_scan_model_link" />
+        <origin xyz="${origin_xyz}" rpy="0 0 ${sensor_YAW}" />
+        <parent link="${parent_name}" />
         <child link="${robot_name}_laser_scan_frame" />
     </joint>
 
@@ -120,8 +90,7 @@
           <update_rate>100.0</update_rate>
           <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
             <ros>
-              <namespace>${robot_name}</namespace>
-              <remapping>~/out:=laser_scan</remapping>
+              <remapping>~/out:=${robot_name}/laser_scan</remapping>
             </ros>
             <output_type>sensor_msgs/LaserScan</output_type>
           </plugin>
@@ -177,8 +146,7 @@
             <plugin name="gazebo_ros_block_laser_controller" filename="libgazebo_ros_ray_sensor.so">
             <!-- Change namespace and output topic so published topic is /rrbot/laser/pointcloud -->
             <ros>
-                <namespace>${robot_name}</namespace>
-                <argument>--ros-args --remap ~/out:=pointcloud</argument>
+                <argument>--ros-args --remap ~/out:=${robot_name}/pointcloud</argument>
                 
             </ros>
             <!-- Set output to sensor_msgs/PointCloud to get same output type as gazebo_ros_block_laser -->

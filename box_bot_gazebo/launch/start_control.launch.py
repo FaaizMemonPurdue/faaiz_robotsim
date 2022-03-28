@@ -11,10 +11,10 @@ from launch.actions import OpaqueFunction
 def launch_setup(context, *args, **kwargs):
 
     box_bot_name = LaunchConfiguration('box_bot_name').perform(context)
-    spawn_controller_1_name = box_bot_name + "spawn_controller_joint_state_broadcaster"
-    spawn_controller_2_name = box_bot_name + "spawn_controller_joint_trajectory_controller"
-    spawn_controller_3_name = box_bot_name + "spawn_controller_velocity_controller"
-    controller_manager_name = "/"  + box_bot_name + "/controller_manager"
+    spawn_controller_1_name = box_bot_name + "_spawn_controller_joint_state_broadcaster"
+    spawn_controller_2_name = box_bot_name + "_spawn_controller_joint_trajectory_controller"
+    spawn_controller_3_name = box_bot_name + "_spawn_controller_velocity_controller"
+    controller_manager_name = box_bot_name + "/controller_manager"
 
     #--controller-manager Name of the controller manager ROS node
     spawn_controller_1 = Node(

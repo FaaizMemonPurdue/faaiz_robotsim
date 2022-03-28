@@ -32,4 +32,9 @@
         <arg name="box_bot_name" value="$(var box_bot_name)"/>
     </include>
 
+    <include file="$(find-pkg-share box_bot_gazebo)/launch/start_control.launch.py">
+        <arg name="box_bot_name" value="$(var box_bot_name)"/>
+    </include>
+    
+
 </launch>

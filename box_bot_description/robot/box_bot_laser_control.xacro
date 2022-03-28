@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro  name="box_bot_laser_control" params="robot_name parent">
+    <xacro:macro  name="box_bot_custom_control" params="robot_name parent">
 
       
       <link name="${robot_name}_laser_scan_link">
@@ -69,8 +69,8 @@
         <dynamics friction="0.01"/>
       </joint>
 
-      <!-- Position Config -->
-        <ros2_control name="GazeboSystem" type="system">
+      <ros2_control name="${robot_name}_GazeboSystem" type="system">
+
           <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
           </hardware>
@@ -99,9 +99,9 @@
 
 
       <gazebo>
-        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <plugin filename="libgazebo_ros2_control.so" name="${robot_name}_gazebo_ros2_control">
           <ros>
-            <namespace>/${robot_name}</namespace>
+            <namespace>${robot_name}</namespace>
           </ros>
           <parameters>$(find box_bot_description)/config/${robot_name}_controller_position_velocity.yaml</parameters>
           <robot_param_node>/${robot_name}_robot_state_publisher</robot_param_node>
