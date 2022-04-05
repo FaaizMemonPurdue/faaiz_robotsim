@@ -6,34 +6,34 @@
     <include file="$(find-pkg-share box_bot_gazebo)/launch/spawn.launch.xml">
             <arg name="box_bot_name" value="box_bot_1"/>
             <arg name="robot_file" value="box_bot.xacro"/>
-            <arg name="x_spawn" value="1.0"/>
-            <arg name="y_spawn" value="0.0"/>
-            <arg name="z_spawn" value="0.0"/>
+            <arg name="x_spawn" value="0.4"/>
+            <arg name="y_spawn" value="1.0"/>
+            <arg name="z_spawn" value="0.2"/>
             <arg name="roll_spawn" value="0.0"/>
             <arg name="pitch_spawn" value="0.0"/>
-            <arg name="yaw_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="-1.5708"/>
     </include>
 
     <include file="$(find-pkg-share box_bot_gazebo)/launch/spawn.launch.xml">
             <arg name="box_bot_name" value="box_bot_2"/>
             <arg name="robot_file" value="box_bot.xacro"/>
-            <arg name="x_spawn" value="0.0"/>
-            <arg name="y_spawn" value="0.0"/>
-            <arg name="z_spawn" value="0.0"/>
+            <arg name="x_spawn" value="-0.2"/>
+            <arg name="y_spawn" value="1.0"/>
+            <arg name="z_spawn" value="0.2"/>
             <arg name="roll_spawn" value="0.0"/>
             <arg name="pitch_spawn" value="0.0"/>
-            <arg name="yaw_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="-1.5708"/>
     </include>
 
      <include file="$(find-pkg-share box_bot_gazebo)/launch/spawn.launch.xml">
             <arg name="box_bot_name" value="box_bot_3"/>
             <arg name="robot_file" value="box_bot.xacro"/>
-            <arg name="x_spawn" value="1.0"/>
+            <arg name="x_spawn" value="-0.8"/>
             <arg name="y_spawn" value="1.0"/>
-            <arg name="z_spawn" value="0.0"/>
+            <arg name="z_spawn" value="0.2"/>
             <arg name="roll_spawn" value="0.0"/>
             <arg name="pitch_spawn" value="0.0"/>
-            <arg name="yaw_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="-1.5708"/>
     </include>
 
 </launch>
