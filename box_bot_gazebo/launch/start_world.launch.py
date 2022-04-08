@@ -46,7 +46,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
           'world',
-          default_value=[os.path.join(pkg_box_bot_gazebo, 'worlds', 'box_bot_box_restaurant.world'), ''],
+          default_value=[os.path.join(pkg_box_bot_gazebo, 'worlds', 'box_bot_box_restaurant_routes.world'), ''],
           description='SDF world file'),
         gazebo
     ])
