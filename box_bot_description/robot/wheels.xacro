@@ -31,9 +31,9 @@
         <material>Gazebo/White</material>
       </gazebo>
 
-      <joint name="${robot_name}_${name_wheel_link}_joint" type="continuous">
+      <joint name="${robot_name}/joint_tire_${name_wheel_link}" type="continuous">
         <origin rpy="0 0 0" xyz="${origin_xyz}"/>
-        <child link="${child}"/>
+        <child link="${robot_name}_${name_wheel_link}"/>
         <parent link="${parent}"/>
         <axis rpy="0 0 0" xyz="0 1 0"/>
         <limit effort="10000" velocity="1000"/>
