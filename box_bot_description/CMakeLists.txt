@@ -30,7 +30,7 @@ install(
   DIRECTORY
     robot
     meshes
-	  rviz
+	rviz
     urdf
     config
     launch

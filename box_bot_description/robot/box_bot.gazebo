@@ -78,16 +78,16 @@
 
         <gazebo>
 			<plugin name="${robot_name}_slotcar" filename="libslotcar.so">
-				<nominal_drive_speed>0.7</nominal_drive_speed>
-				<nominal_drive_acceleration>0.25</nominal_drive_acceleration>
-				<max_drive_acceleration>0.75</max_drive_acceleration>
-				<nominal_turn_speed>0.6</nominal_turn_speed>
-				<nominal_turn_acceleration>1.5</nominal_turn_acceleration>
+				<nominal_drive_speed>0.4</nominal_drive_speed>
+				<nominal_drive_acceleration>0.5</nominal_drive_acceleration>
+				<max_drive_acceleration>0.6</max_drive_acceleration>
+				<nominal_turn_speed>0.3</nominal_turn_speed>
+				<nominal_turn_acceleration>0.2</nominal_turn_acceleration>
 				<max_turn_acceleration>2.0</max_turn_acceleration>
-				<tire_radius>0.1</tire_radius>
-				<base_width>0.3206</base_width>
-				<stop_distance>0.01</stop_distance>
-				<stop_radius>0.01</stop_radius>
+				<tire_radius>${wheel_radius}</tire_radius>
+				<base_width>${wheel_separation}</base_width>
+				<stop_distance>0.001</stop_distance>
+				<stop_radius>0.001</stop_radius>
 			</plugin>
 		</gazebo>	
 
