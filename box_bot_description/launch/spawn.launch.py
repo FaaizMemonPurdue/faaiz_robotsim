@@ -15,11 +15,12 @@ def launch_setup(context, *args, **kwargs):
 
     x_spawn = LaunchConfiguration('x_spawn').perform(context)
     y_spawn = LaunchConfiguration('y_spawn').perform(context)
+    z_spawn = LaunchConfiguration('z_spawn').perform(context)
     entity_name = LaunchConfiguration('entity_name').perform(context)
 
     print("###############################################################")
     print("SPAWN MULTI Robot="+str(entity_name) +
-          ",["+str(x_spawn)+","+str(y_spawn)+"]")
+          ",["+str(x_spawn)+","+str(y_spawn)+","+str(z_spawn)+"]")
     print("###############################################################")
 
     # ROBOT STATE PUBLISHER
@@ -60,7 +61,7 @@ def launch_setup(context, *args, **kwargs):
         output='screen',
         arguments=['-entity',
                    entity_name,
-                   '-x', x_spawn, '-y', y_spawn,
+                   '-x', x_spawn, '-y', y_spawn, '-z', z_spawn,
                    '-topic', 'robot_description',
                    '-timeout', '120.0'
                    ]
@@ -73,12 +74,14 @@ def generate_launch_description():
 
     x_spawn_arg = DeclareLaunchArgument('x_spawn', default_value='1.0')
     y_spawn_arg = DeclareLaunchArgument('y_spawn', default_value='2.0')
+    z_spawn_arg = DeclareLaunchArgument('z_spawn', default_value='3.0')
     entity_name_arg = DeclareLaunchArgument(
         'entity_name', default_value='box_bot_1')
 
     return LaunchDescription([
         x_spawn_arg,
         y_spawn_arg,
+        z_spawn_arg,
         entity_name_arg,
         OpaqueFunction(function=launch_setup)
     ])
