@@ -21,20 +21,39 @@
     </include>
 
     <include>
-      <uri>model://box_restaurant_routes</uri>
-      <pose>1.44 -1.65 -0.1 0 0 0</pose>
-    </include>
-
-    <include>
       <uri>model://box_restaurant</uri>
       <pose>1.44 -1.65 -0.1 0 0 0</pose>
     </include>
 
-    <rmf_charger_waypoints name="charger_waypoints">
+
+    <include>
+      <uri>model://charging_station_1</uri>
+      <pose>0.62173 -0.75 -0.06 0 0 -1.52</pose>
+    </include>
+
+        <include>
+      <uri>model://charging_station_2</uri>
+      <pose>1.2191 -0.75 -0.06 0 0 -1.52</pose>
+    </include>
+
+
+    <include>
+      <uri>model://charging_station_3</uri>
+      <pose>1.824 -0.75 -0.06 0 0 -1.52</pose>
+    </include>
+
+    <!-- <rmf_charger_waypoints name="charger_waypoints">
       <rmf_vertex name="box_bot_1_charging_station" x="0.5" y="-1.52265347520784" level="L1" />
       <rmf_vertex name="box_bot_2_charging_station" x="1.0" y="-1.52265347520784" level="L1" />
       <rmf_vertex name="box_bot_3_charging_station" x="1.6" y="-1.52265347520784" level="L1" />
-    </rmf_charger_waypoints>
+    </rmf_charger_waypoints> -->
+
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+      </ros>
+      <update_rate>5.0</update_rate>
+    </plugin>
 
   </world>
 </sdf>
