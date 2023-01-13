@@ -22,6 +22,22 @@ def generate_launch_description():
     gazebo_models_path = os.path.join(pkg_box_bot_gazebo, 'models')
     # os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
 
+    # Plugins
+    gazebo_plugins_name = "gazebo_plugins"
+    gazebo_plugins_name_path_install_dir = get_package_prefix(
+        gazebo_plugins_name)
+
+    gazebo_plugins_name = "gazebo_plugins"
+    gazebo_plugins_name_path_install_dir = get_package_prefix(
+        gazebo_plugins_name)
+
+    # The slot car plugin is inside here
+    plugin_pkg = "rmf_robot_sim_gz_classic_plugins"
+    plugin_dir = get_package_prefix(plugin_pkg)
+
+    plugin_building_pkg = "rmf_building_sim_gz_classic_plugins"
+    plugin_building_dir = get_package_prefix(plugin_building_pkg)
+
     if 'GAZEBO_MODEL_PATH' in os.environ:
         os.environ['GAZEBO_MODEL_PATH'] = os.environ['GAZEBO_MODEL_PATH'] + \
             ':' + install_dir + '/share' + ':' + gazebo_models_path
@@ -30,10 +46,14 @@ def generate_launch_description():
             "/share" + ':' + gazebo_models_path
 
     if 'GAZEBO_PLUGIN_PATH' in os.environ:
-        os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + \
-            ':' + install_dir + '/lib'
+        os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + ':' + install_dir + '/lib' + ':' + \
+            gazebo_plugins_name_path_install_dir + '/lib' + ':' + \
+            plugin_dir + '/lib' + '/rmf_robot_sim_gz_classic_plugins' + ':' + \
+            plugin_building_dir + '/lib' + '/rmf_building_sim_gz_classic_plugins'
     else:
-        os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib'
+        os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib' + ':' + gazebo_plugins_name_path_install_dir + \
+            '/lib' + ':' + plugin_dir + '/lib' + '/rmf_robot_sim_gz_classic_plugins' + \
+            ':' + plugin_building_dir + '/lib' + '/rmf_building_sim_gz_classic_plugins'
 
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))

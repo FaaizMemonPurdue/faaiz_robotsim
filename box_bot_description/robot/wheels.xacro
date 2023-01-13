@@ -31,7 +31,9 @@
         <material>Gazebo/White</material>
       </gazebo>
 
-      <joint name="${robot_name}/joint_tire_${name_wheel_link}" type="continuous">
+        box_bot_3_left_wheel_joint
+
+      <joint name="${robot_name}_${name_wheel_link}_joint" type="continuous">
         <origin rpy="0 0 0" xyz="${origin_xyz}"/>
         <child link="${robot_name}_${name_wheel_link}"/>
         <parent link="${parent}"/>
