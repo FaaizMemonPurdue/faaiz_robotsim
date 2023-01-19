@@ -22,6 +22,11 @@ def generate_launch_description():
     gazebo_models_path = os.path.join(pkg_box_bot_gazebo, 'models')
     # os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
 
+    # Actor plugin
+    animated_actors_package = "animated_actors"
+    animated_actors_lib_path = get_package_prefix(
+        animated_actors_package)
+
     if 'GAZEBO_MODEL_PATH' in os.environ:
         os.environ['GAZEBO_MODEL_PATH'] = os.environ['GAZEBO_MODEL_PATH'] + \
             ':' + install_dir + '/share' + ':' + gazebo_models_path
@@ -31,9 +36,11 @@ def generate_launch_description():
 
     if 'GAZEBO_PLUGIN_PATH' in os.environ:
         os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + \
-            ':' + install_dir + '/lib'
+            ':' + install_dir + '/lib' + \
+            ':' + animated_actors_lib_path + '/lib/' + animated_actors_package
     else:
-        os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib'
+        os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib' + \
+            ':' + animated_actors_lib_path + '/lib/' + animated_actors_package
 
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))

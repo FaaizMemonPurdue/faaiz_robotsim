@@ -44,6 +44,11 @@ def generate_launch_description():
     plugin_building_pkg = "rmf_building_sim_gz_classic_plugins"
     plugin_building_dir = get_package_prefix(plugin_building_pkg)
 
+    # Actor plugin
+    animated_actors_package = "animated_actors"
+    animated_actors_lib_path = get_package_prefix(
+        animated_actors_package)
+
     if 'GAZEBO_MODEL_PATH' in os.environ:
         os.environ['GAZEBO_MODEL_PATH'] = os.environ['GAZEBO_MODEL_PATH'] + ':' + install_dir + \
             '/share' + ':' + gazebo_models_path
@@ -55,11 +60,13 @@ def generate_launch_description():
         os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + ':' + install_dir + '/lib' + ':' + \
             gazebo_plugins_name_path_install_dir + '/lib' + ':' + \
             plugin_dir + '/lib' + '/rmf_robot_sim_gz_classic_plugins' + ':' + \
-            plugin_building_dir + '/lib' + '/rmf_building_sim_gz_classic_plugins'
+            plugin_building_dir + '/lib' + '/rmf_building_sim_gz_classic_plugins' + \
+            ':' + animated_actors_lib_path + '/lib/' + animated_actors_package
     else:
         os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib' + ':' + gazebo_plugins_name_path_install_dir + \
             '/lib' + ':' + plugin_dir + '/lib' + '/rmf_robot_sim_gz_classic_plugins' + \
-            ':' + plugin_building_dir + '/lib' + '/rmf_building_sim_gz_classic_plugins'
+            ':' + plugin_building_dir + '/lib' + '/rmf_building_sim_gz_classic_plugins' + \
+            ':' + animated_actors_lib_path + '/lib/' + animated_actors_package
 
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))

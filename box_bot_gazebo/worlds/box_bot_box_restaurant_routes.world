@@ -42,6 +42,134 @@
       <pose>1.824 -0.75 -0.06 0 0 -1.52</pose>
     </include>
 
+
+    <!-- The Actors -->
+    <!-- Bartender-->
+
+    <actor name="actor_bartender">
+        <pose>3.2474 -0.996 -0.0117 1.57 0 0</pose>
+        <skin>
+            <filename>tc_human_bar.dae</filename>
+            <scale>1.0</scale>
+        </skin>
+
+        <animation name="idle">
+            <filename>tc_human_bar.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="waving">
+            <filename>tc_human_bar.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="working">
+            <filename>tc_human_bar.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+
+
+        <plugin name="actor_bartender_plugin" filename="libanimated_dispenser.so">
+            <animation_factor>2.1</animation_factor>
+        </plugin>
+    </actor>
+
+
+    <!-- T1 -->
+    <actor name="actor1">
+        <pose>1.65 -3.55 -0.128 1.57 0 -1.57</pose>
+        <skin>
+            <filename>tc_human_talk_yellow.dae</filename>
+            <scale>1.0</scale>
+        </skin>
+
+        <animation name="idle">
+            <filename>tc_human_talk.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="waving">
+            <filename>tc_human_win.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="working">
+            <filename>tc_human_win.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+
+
+        <plugin name="actor1_plugin" filename="libanimated_dispenser.so">
+            <animation_factor>5.1</animation_factor>
+        </plugin>
+    </actor>
+
+
+    <actor name="actor2">
+        <pose>0.65 -3.55 -0.128 1.57 0 1.57</pose>
+        <skin>
+            <filename>tc_human_talk.dae</filename>
+            <scale>1.0</scale>
+        </skin>
+
+        <animation name="idle">
+            <filename>tc_human_talk.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="waving">
+            <filename>tc_human_win.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="working">
+            <filename>tc_human_win.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+
+
+        <plugin name="actor2_plugin" filename="libanimated_dispenser.so">
+            <animation_factor>3.3</animation_factor>
+        </plugin>
+    </actor>
+
+
+
+    <!-- T3 -->
+
+    <actor name="actor6">
+        <pose>4.015 -3.55 -0.092 1.57 0 -1.57</pose>
+        <skin>
+            <filename>tc_human_sit_wait.dae</filename>
+            <scale>1.0</scale>
+        </skin>
+
+        <animation name="idle">
+            <filename>tc_human_sit_wait.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="waving">
+            <filename>tc_human_sit_wait.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+        <animation name="working">
+            <filename>tc_human_sit_wait.dae</filename>
+            <scale>1.0</scale>
+            <interpolate_x>false</interpolate_x>
+        </animation>
+
+
+        <plugin name="actor6_plugin" filename="libanimated_dispenser.so">
+            <animation_factor>1.1</animation_factor>
+        </plugin>
+    </actor>
+
+
     <!-- <rmf_charger_waypoints name="charger_waypoints">
       <rmf_vertex name="box_bot_1_charging_station" x="0.5" y="-1.52265347520784" level="L1" />
       <rmf_vertex name="box_bot_2_charging_station" x="1.0" y="-1.52265347520784" level="L1" />
