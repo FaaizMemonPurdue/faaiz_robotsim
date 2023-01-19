@@ -13,5 +13,21 @@
       <uri>model://box_restaurant</uri>
     </include>
 
+    <include>
+      <uri>model://charging_station_1</uri>
+      <pose>0.62173 -0.75 -0.06 0 0 -1.52</pose>
+    </include>
+
+        <include>
+      <uri>model://charging_station_2</uri>
+      <pose>1.2191 -0.75 -0.06 0 0 -1.52</pose>
+    </include>
+
+
+    <include>
+      <uri>model://charging_station_3</uri>
+      <pose>1.824 -0.75 -0.06 0 0 -1.52</pose>
+    </include>
+
   </world>
 </sdf>
