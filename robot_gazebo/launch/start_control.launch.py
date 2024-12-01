@@ -23,7 +23,8 @@ def launch_setup(context, *args, **kwargs):
         name=spawn_controller_1_name,
         namespace=robot_name,
         arguments=["joint_state_broadcaster", "--controller-manager", controller_manager_name],
-        output="screen"
+        output="screen",
+        parameters=[{"use_sim_time": True}]
     )
 
     spawn_controller_2 = Node(
@@ -32,7 +33,8 @@ def launch_setup(context, *args, **kwargs):
         name=spawn_controller_2_name,
         namespace=robot_name,
         arguments=["forward_velocity_controller", "--controller-manager", controller_manager_name],
-        output="screen"
+        output="screen",
+        parameters=[{"use_sim_time": True}]
     )
 
     return [spawn_controller_1, spawn_controller_2]

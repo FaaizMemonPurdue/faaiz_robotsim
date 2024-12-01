@@ -1,6 +1,7 @@
 robot_1:
   controller_manager:
     ros__parameters:
+      # use_sim_time: true
       update_rate: 100  # Hz
 
       forward_velocity_controller:

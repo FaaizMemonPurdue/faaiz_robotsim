@@ -39,7 +39,8 @@ def generate_launch_description():
 
     joy_node = Node(
         package = "joy",
-        executable = "joy_node"
+        executable = "joy_node",
+        parameters=[{"use_sim_time": True}],
         )
 
     return LaunchDescription([

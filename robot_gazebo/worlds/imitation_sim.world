@@ -4,14 +4,19 @@
   <world name="default">
 
     <gravity>0 0 -9.80664</gravity>
-
+    <physics default="1" name="default_physics" type="ode">
+      <real_time_update_rate>0</real_time_update_rate> 
+      <max_step_size>0.001</max_step_size>
+    </physics>
     <include>
       <uri>model://sun</uri>
     </include>
-
-    <include>
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <!-- <include>
       <uri>model://ground_plane</uri>
-    </include>
+    </include> -->
 
     <include>
       <name>box1</name>
@@ -129,7 +134,7 @@
       <camera name='user_camera'>
         <pose>0 0 10 0 1.5707 0</pose>
         <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
+        <projection_type>projective</projection_type>
       </camera>
     </gui>
   </world>
