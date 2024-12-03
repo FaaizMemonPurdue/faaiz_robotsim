@@ -9,6 +9,7 @@
 	  <parent link="${parent}"/>
 	  <child link="${prefix}_roller_link"/>
 	  <xacro:insert_block name="joint_axis"/>
+	  <!-- <dynamics damping="0.0" friction="0.001"/> -->
 	</joint>
 
 	<link name="${prefix}_roller_link">
