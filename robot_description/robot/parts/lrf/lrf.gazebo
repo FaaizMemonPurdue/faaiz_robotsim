@@ -21,11 +21,11 @@
 		<max>${max_range}</max>
 		<resolution>0.01</resolution>
           </range>
-          <noise>
+          <!-- <noise>
 		<type>gaussian</type>
 		<mean>0.0</mean>
 		<stddev>0.03</stddev>
-          </noise>
+          </noise> -->
 		</ray>
 		<plugin name="gazebo_ros_${prefix}_lrf_controller" filename="libgazebo_ros_ray_sensor.so">
             <ros>
